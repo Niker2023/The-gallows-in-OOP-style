@@ -2,9 +2,9 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        String word = new Word().getWord();
-
-
-
+        Word word = new Word();
+        GetWord getWord = new GetWordFromDictionary();
+        word.setWord(getWord.get());
+        System.out.println(word.getWord());
     }
 }
