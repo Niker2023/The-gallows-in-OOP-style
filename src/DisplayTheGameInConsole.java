@@ -59,4 +59,9 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
         }
         System.out.println();
     }
+
+    @Override
+    public void suggestionToEnterLetter() {
+
+    }
 }

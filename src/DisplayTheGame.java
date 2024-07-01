@@ -11,4 +11,6 @@ public interface DisplayTheGame {
     void showWordMask(Word hiddenWord, Set<Character> correctLettersSet);
 
     void showErrorCount(int errorCount, Set<Character> incorrectLettersSet);
+
+    void suggestionToEnterLetter();
 }
