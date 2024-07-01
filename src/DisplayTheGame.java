@@ -13,4 +13,10 @@ public interface DisplayTheGame {
     void showErrorCount(int errorCount, Set<Character> incorrectLettersSet);
 
     void suggestionToEnterLetter();
+
+    void showHiddenWord(Word word);
+
+    void showVictory();
+
+    void showLose();
 }

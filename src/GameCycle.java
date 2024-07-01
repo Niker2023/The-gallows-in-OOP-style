@@ -43,10 +43,12 @@ public class GameCycle {
 
                 if (errorCount == 6) {
                     display.showGallows(errorCount);
+                    display.showLose();
                 } else {
                     display.showGallows(777);
+                    display.showVictory();
                 }
-                System.out.println("Загаданное слово: " + hiddenWord.getWord());
+                display.showHiddenWord(hiddenWord);
                 // Предложение сыграть снова
                 if (enters.shallContinue()) {
                     errorCount = -1;

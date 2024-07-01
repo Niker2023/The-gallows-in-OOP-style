@@ -16,14 +16,8 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
             case 3 -> System.out.println(RenderGallows.stageThree);
             case 4 -> System.out.println(RenderGallows.stageFour);
             case 5 -> System.out.println(RenderGallows.stageFive);
-            case 6 -> {
-                System.out.println(RenderGallows.hangedMan);
-                System.out.println("Поражение!");
-            }
-            default -> {
-                System.out.println(RenderGallows.amnestyMan);
-                System.out.println("Победа!");
-            }
+            case 6 -> System.out.println(RenderGallows.hangedMan);
+            default -> System.out.println(RenderGallows.amnestyMan);
         }
     }
 
@@ -63,5 +57,21 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
     @Override
     public void suggestionToEnterLetter() {
 
+    }
+
+    @Override
+    public void showHiddenWord(Word word) {
+        System.out.println("Загаданное слово: " + word.getWord());
+    }
+
+    @Override
+    public void showVictory() {
+        System.out.println("Победа!");
+
+    }
+
+    @Override
+    public void showLose() {
+        System.out.println("Поражение!");
     }
 }
