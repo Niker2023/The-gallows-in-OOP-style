@@ -1,14 +1,14 @@
+import java.util.Set;
+
 public interface DisplayTheGame {
 
     void showWelcome();
 
-    void showGallows();
+    void showGallows(int errorCount);
 
     void refreshDisplay();
 
-    void showWordMask();
+    void showWordMask(Word hiddenWord, Set<Character> correctLettersSet);
 
-    void showIncorrectChar();
-
-    void showSuggestToContinue();
+    void showErrorCount(int errorCount, Set<Character> incorrectLettersSet);
 }

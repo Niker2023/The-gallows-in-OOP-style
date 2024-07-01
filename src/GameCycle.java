@@ -9,24 +9,54 @@ public class GameCycle {
         int errorCount = -1;
         Set<Character> correctLettersSet = new HashSet<>();
         Set<Character> incorrectLettersSet = new HashSet<>();
+        char enteredLetter;
 
         WorkingWithTheDictionary dictionary = new DictionaryFromFile().initializeTheDictionary();
-        DisplayTheGame displayTheGame = new DisplayTheGameInConsole();
+        DisplayTheGame display = new DisplayTheGameInConsole();
+        UserEnters enters = new UserEntersFromConsole();
+        Word hiddenWord = new Word("");
 
         while (gameIsOn) {
 
             if (errorCount == -1) {
-                Word currentWord = new Word(dictionary.getRandomWord());
-                if (currentWord.getWord().isEmpty()) {
+                hiddenWord = new Word(dictionary.getRandomWord());
+                if (hiddenWord.getWord().isEmpty()) {
                     break;
                 }
-                displayTheGame.showWelcome();
-                System.out.println("Добро пожаловать в игру!");
+                display.showWelcome();
                 errorCount++;
             } else {
-
+                display.refreshDisplay();
             }
+            display.showGallows(errorCount);
+            display.showWordMask(hiddenWord, correctLettersSet);
+            display.showErrorCount(errorCount, incorrectLettersSet);
+            enteredLetter = enters.enterChar(correctLettersSet, incorrectLettersSet);
+            if (hiddenWord.getWord().indexOf(enteredLetter) == -1) {
+                incorrectLettersSet.add(enteredLetter);
+                errorCount++;
+            } else {
+                correctLettersSet.add(enteredLetter);
+            }
+            if (errorCount == 6 || hiddenWord.isGuessed(correctLettersSet)) {
+                display.refreshDisplay();
 
+                if (errorCount == 6) {
+                    display.showGallows(errorCount);
+                } else {
+                    display.showGallows(777);
+                }
+                System.out.println("Загаданное слово: " + hiddenWord.getWord());
+                // Предложение сыграть снова
+                if (enters.shallContinue()) {
+                    errorCount = -1;
+                    correctLettersSet.clear();
+                    incorrectLettersSet.clear();
+                    display.refreshDisplay();
+                } else {
+                    gameIsOn = false;
+                }
+            }
         }
     }
 }
