@@ -1,4 +1,4 @@
 public interface WorkingWithTheDictionary {
-    WorkingWithTheDictionary initializeTheDictionary();
+    WorkingWithTheDictionary initializeTheDictionary(DisplayTheGame display);
     String getRandomWord();
 }

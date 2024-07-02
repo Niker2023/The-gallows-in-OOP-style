@@ -9,7 +9,7 @@ public class DictionaryFromFile implements WorkingWithTheDictionary {
     private List<String> dictionary;
 
     @Override
-    public WorkingWithTheDictionary initializeTheDictionary() {
+    public WorkingWithTheDictionary initializeTheDictionary(DisplayTheGame display) {
         dictionary = new ArrayList<>();
         String pathToWords = new File("").getAbsolutePath();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(pathToWords.concat("/words.txt"))))){
@@ -19,7 +19,7 @@ public class DictionaryFromFile implements WorkingWithTheDictionary {
             }
         }
         catch (Exception exp){
-            System.out.println("Не найден файл словаря, поместите его в корень проекта. Подробнее в README.");
+            display.showWarningMessage("Не найден файл словаря, поместите его в корень проекта. Подробнее в README.");
         }
         return this;
     }

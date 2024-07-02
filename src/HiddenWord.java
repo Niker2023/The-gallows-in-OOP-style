@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public class Word {
-    private String word;
+public class HiddenWord {
+    private final String word;
 
-    public Word(String word) {
+    public HiddenWord(String word) {
         this.word = word;
     }
 

@@ -10,10 +10,10 @@ public interface DisplayTheGame {
 
     void refreshDisplay();
 
-    void showWordMask(Word hiddenWord, Set<Character> correctLettersSet);
+    void showWordMask(HiddenWord hiddenWord, Set<Character> correctLettersSet);
 
     void showErrorCountAndIncorrectLetters(int errorCount, Set<Character> incorrectLettersSet);
 
-    void showHiddenWord(Word word);
+    void showHiddenWord(HiddenWord hiddenWord);
 
 }

@@ -35,7 +35,7 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
     }
 
     @Override
-    public void showWordMask(Word hiddenWord, Set<Character> correctLettersSet) {
+    public void showWordMask(HiddenWord hiddenWord, Set<Character> correctLettersSet) {
         char[] charsWord = hiddenWord.getWord().toCharArray();
         System.out.print("Загаданное слово: ");
         for (char currentChar : charsWord) {
@@ -63,8 +63,8 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
     }
 
     @Override
-    public void showHiddenWord(Word word) {
-        System.out.println("Загаданное слово: " + word.getWord());
+    public void showHiddenWord(HiddenWord hiddenWord) {
+        System.out.println("Загаданное слово: " + hiddenWord.getWord());
     }
 
 }

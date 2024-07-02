@@ -9,11 +9,11 @@ public class UserEntersFromConsole implements UserEnters{
 
     @Override
     public char enterChar(Set<Character> incorrectLettersSet, Set<Character> correctLettersSet, DisplayTheGame display) {
-        char inputLettr = 0;
-        boolean status = true;
+        char enteredLetter = 0;
+        boolean isInputCorrectLetter = false;
         boolean isCorrectLatter = true;
         Pattern pattern = Pattern.compile(".*\\p{InCyrillic}.*");
-        while (status) {
+        while (!isInputCorrectLetter) {
             if (isCorrectLatter) {
                 display.showMessage("Введите букву: ");
             }
@@ -37,17 +37,17 @@ public class UserEntersFromConsole implements UserEnters{
                 isCorrectLatter = false;
                 continue;
             }
-            inputLettr = inChar.charAt(0);
-            status = false;
+            enteredLetter = inChar.charAt(0);
+            isInputCorrectLetter = true;
         }
-        return inputLettr;
+        return enteredLetter;
     }
 
     @Override
     public boolean shallContinue(DisplayTheGame display) {
         display.showMessage("Введите любой символ для завершения или оставьте пустую строку для нового раунда");
-        String input = scanner.nextLine();
-        if (input.isEmpty()) {
+        String enteredText = scanner.nextLine();
+        if (enteredText.isEmpty()) {
             return true;
         } else {
             display.showMessage("До новых встреч!");

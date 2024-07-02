@@ -11,15 +11,14 @@ public class GameCycle {
         Set<Character> incorrectLettersSet = new HashSet<>();
         char enteredLetter;
 
-        WorkingWithTheDictionary dictionary = new DictionaryFromFile().initializeTheDictionary();
         DisplayTheGame display = new DisplayTheGameInConsole();
+        WorkingWithTheDictionary dictionary = new DictionaryFromFile().initializeTheDictionary(display);
         UserEnters enters = new UserEntersFromConsole();
-        Word hiddenWord = new Word("");
+        HiddenWord hiddenWord = new HiddenWord("");
 
         while (gameIsOn) {
-
             if (errorCount == -1) {
-                hiddenWord = new Word(dictionary.getRandomWord());
+                hiddenWord = new HiddenWord(dictionary.getRandomWord());
                 if (hiddenWord.getWord().isEmpty()) {
                     break;
                 }
@@ -36,8 +35,8 @@ public class GameCycle {
                 incorrectLettersSet.add(enteredLetter);
                 errorCount++;
             } else {
-                correctLettersSet.add(enteredLetter);
-            }
+                correctLettersSet.add(enteredLetter);            }
+
             if (errorCount == 6 || hiddenWord.isGuessed(correctLettersSet)) {
                 display.refreshDisplay();
 
