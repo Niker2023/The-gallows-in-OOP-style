@@ -11,9 +11,9 @@ public class GameCycle {
         Set<Character> incorrectLettersSet = new HashSet<>();
         char enteredLetter;
 
-        DisplayTheGame display = new DisplayTheGameInConsole();
-        WorkingWithTheDictionary dictionary = new DictionaryFromFile().initializeTheDictionary(display);
-        UserEnters enters = new UserEntersFromConsole();
+        Printer display = new ConsolePrinter();
+        DictionaryLoader dictionary = new FileLoader().initializeTheDictionary(display);
+        Reader enters = new ConsoleReader();
         HiddenWord hiddenWord = new HiddenWord("");
 
         while (gameIsOn) {

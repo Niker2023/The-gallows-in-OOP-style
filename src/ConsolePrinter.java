@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public class DisplayTheGameInConsole implements DisplayTheGame{
+public class ConsolePrinter implements Printer {
 
     private static final String RED_COLOR = "\u001B[31m";
     private static final String RESET_COLOR = "\u001B[0m";

@@ -1,6 +1,6 @@
 import java.util.Set;
 
-public interface DisplayTheGame {
+public interface Printer {
 
     void showMessage(String message);
 

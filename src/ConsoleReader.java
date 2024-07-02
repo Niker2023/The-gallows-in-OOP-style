@@ -3,12 +3,12 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserEntersFromConsole implements UserEnters{
+public class ConsoleReader implements Reader {
 
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public char enterChar(Set<Character> incorrectLettersSet, Set<Character> correctLettersSet, DisplayTheGame display) {
+    public char enterChar(Set<Character> incorrectLettersSet, Set<Character> correctLettersSet, Printer display) {
         char enteredLetter = 0;
         boolean isInputCorrectLetter = false;
         boolean isCorrectLatter = true;
@@ -44,7 +44,7 @@ public class UserEntersFromConsole implements UserEnters{
     }
 
     @Override
-    public boolean shallContinue(DisplayTheGame display) {
+    public boolean shallContinue(Printer display) {
         display.showMessage("Введите любой символ для завершения или оставьте пустую строку для нового раунда");
         String enteredText = scanner.nextLine();
         if (enteredText.isEmpty()) {

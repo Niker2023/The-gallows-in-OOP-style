@@ -4,12 +4,12 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class DictionaryFromFile implements WorkingWithTheDictionary {
+public class FileLoader implements DictionaryLoader {
 
     private List<String> dictionary;
 
     @Override
-    public WorkingWithTheDictionary initializeTheDictionary(DisplayTheGame display) {
+    public DictionaryLoader initializeTheDictionary(Printer display) {
         dictionary = new ArrayList<>();
         String pathToWords = new File("").getAbsolutePath();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(pathToWords.concat("/words.txt"))))){
