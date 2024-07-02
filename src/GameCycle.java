@@ -23,15 +23,15 @@ public class GameCycle {
                 if (hiddenWord.getWord().isEmpty()) {
                     break;
                 }
-                display.showWelcome();
+                display.showMessage("Добро пожаловать в игру!");
                 errorCount++;
             } else {
                 display.refreshDisplay();
             }
             display.showGallows(errorCount);
             display.showWordMask(hiddenWord, correctLettersSet);
-            display.showErrorCount(errorCount, incorrectLettersSet);
-            enteredLetter = enters.enterChar(correctLettersSet, incorrectLettersSet);
+            display.showErrorCountAndIncorrectLetters(errorCount, incorrectLettersSet);
+            enteredLetter = enters.enterChar(correctLettersSet, incorrectLettersSet, display);
             if (hiddenWord.getWord().indexOf(enteredLetter) == -1) {
                 incorrectLettersSet.add(enteredLetter);
                 errorCount++;
@@ -43,14 +43,14 @@ public class GameCycle {
 
                 if (errorCount == 6) {
                     display.showGallows(errorCount);
-                    display.showLose();
+                    display.showMessage("Поражение!");
                 } else {
                     display.showGallows(777);
-                    display.showVictory();
+                    display.showMessage("Победа!");
                 }
                 display.showHiddenWord(hiddenWord);
                 // Предложение сыграть снова
-                if (enters.shallContinue()) {
+                if (enters.shallContinue(display)) {
                     errorCount = -1;
                     correctLettersSet.clear();
                     incorrectLettersSet.clear();

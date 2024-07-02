@@ -2,7 +2,9 @@ import java.util.Set;
 
 public interface DisplayTheGame {
 
-    void showWelcome();
+    void showMessage(String message);
+
+    void showWarningMessage(String message);
 
     void showGallows(int errorCount);
 
@@ -10,13 +12,8 @@ public interface DisplayTheGame {
 
     void showWordMask(Word hiddenWord, Set<Character> correctLettersSet);
 
-    void showErrorCount(int errorCount, Set<Character> incorrectLettersSet);
-
-    void suggestionToEnterLetter();
+    void showErrorCountAndIncorrectLetters(int errorCount, Set<Character> incorrectLettersSet);
 
     void showHiddenWord(Word word);
 
-    void showVictory();
-
-    void showLose();
 }

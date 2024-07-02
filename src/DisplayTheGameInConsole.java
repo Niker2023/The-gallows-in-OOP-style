@@ -2,22 +2,30 @@ import java.util.Set;
 
 public class DisplayTheGameInConsole implements DisplayTheGame{
 
+    private static final String RED_COLOR = "\u001B[31m";
+    private static final String RESET_COLOR = "\u001B[0m";
+
     @Override
-    public void showWelcome() {
-        System.out.println("Добро пожаловать в игру!");
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
+
+    @Override
+    public void showWarningMessage(String message) {
+        System.out.println(RED_COLOR + message + RESET_COLOR);
     }
 
     @Override
     public void showGallows(int errorCount) {
         switch (errorCount) {
-            case 0 -> System.out.println(RenderGallows.empty);
-            case 1 -> System.out.println(RenderGallows.stageOne);
-            case 2 -> System.out.println(RenderGallows.stageTwo);
-            case 3 -> System.out.println(RenderGallows.stageThree);
-            case 4 -> System.out.println(RenderGallows.stageFour);
-            case 5 -> System.out.println(RenderGallows.stageFive);
-            case 6 -> System.out.println(RenderGallows.hangedMan);
-            default -> System.out.println(RenderGallows.amnestyMan);
+            case 0 -> System.out.println(RenderGallows.EMPTY);
+            case 1 -> System.out.println(RenderGallows.STAGE_ONE);
+            case 2 -> System.out.println(RenderGallows.STAGE_TWO);
+            case 3 -> System.out.println(RenderGallows.STAGE_THREE);
+            case 4 -> System.out.println(RenderGallows.STAGE_FOUR);
+            case 5 -> System.out.println(RenderGallows.STAGE_FIVE);
+            case 6 -> System.out.println(RenderGallows.HANGED_MAN);
+            default -> System.out.println(RenderGallows.AMNESTY_MAN);
         }
     }
 
@@ -46,7 +54,7 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
     }
 
     @Override
-    public void showErrorCount(int errorCount, Set<Character> incorrectLettersSet) {
+    public void showErrorCountAndIncorrectLetters(int errorCount, Set<Character> incorrectLettersSet) {
         System.out.print("Количество ошибок: " + errorCount + ".   Буквы, отсутствующие в слове:");
         for (char incorrectChar : incorrectLettersSet) {
             if (incorrectChar != 0) System.out.print(" " + incorrectChar);
@@ -55,23 +63,8 @@ public class DisplayTheGameInConsole implements DisplayTheGame{
     }
 
     @Override
-    public void suggestionToEnterLetter() {
-
-    }
-
-    @Override
     public void showHiddenWord(Word word) {
         System.out.println("Загаданное слово: " + word.getWord());
     }
 
-    @Override
-    public void showVictory() {
-        System.out.println("Победа!");
-
-    }
-
-    @Override
-    public void showLose() {
-        System.out.println("Поражение!");
-    }
 }

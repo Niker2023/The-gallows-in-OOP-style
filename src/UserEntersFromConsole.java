@@ -8,41 +8,49 @@ public class UserEntersFromConsole implements UserEnters{
     private final Scanner scanner = new Scanner(System.in);
 
     @Override
-    public char enterChar(Set<Character> incorrectLettersSet, Set<Character> correctLettersSet) {
-        char letter = 0;
+    public char enterChar(Set<Character> incorrectLettersSet, Set<Character> correctLettersSet, DisplayTheGame display) {
+        char inputLettr = 0;
         boolean status = true;
+        boolean isCorrectLatter = true;
         Pattern pattern = Pattern.compile(".*\\p{InCyrillic}.*");
         while (status) {
-            System.out.print("Введите букву: ");
+            if (isCorrectLatter) {
+                display.showMessage("Введите букву: ");
+            }
+            isCorrectLatter = true;
             String inChar = scanner.nextLine().toUpperCase();
             Matcher matcher = pattern.matcher(inChar);
             if (inChar.length() != 1){
-                System.out.println("Введите один символ:");
+                display.showWarningMessage("Введите один символ:");
+                isCorrectLatter = false;
                 continue;
             } else if (!Character.isLetter(inChar.charAt(0))) {
-                System.out.println("Введите букву:");
+                display.showWarningMessage("Введите букву:");
+                isCorrectLatter = false;
                 continue;
             } else if (!matcher.matches()) {
-                System.out.println("Введите кириллицу:");
+                display.showWarningMessage("Введите кириллицу:");
+                isCorrectLatter = false;
                 continue;
             } else if (correctLettersSet.contains(inChar.charAt(0)) | incorrectLettersSet.contains(inChar.charAt(0))) {
-                System.out.println("Данная буква уже вводилась, введите другую:");
+                display.showWarningMessage("Данная буква уже вводилась, введите другую:");
+                isCorrectLatter = false;
                 continue;
             }
-            letter = inChar.charAt(0);
+            inputLettr = inChar.charAt(0);
             status = false;
         }
-        return letter;
+        return inputLettr;
     }
 
     @Override
-    public boolean shallContinue() {
-        System.out.println("Введите любой символ для завершения или оставьте пустую строку для нового раунда");
+    public boolean shallContinue(DisplayTheGame display) {
+        display.showMessage("Введите любой символ для завершения или оставьте пустую строку для нового раунда");
         String input = scanner.nextLine();
         if (input.isEmpty()) {
             return true;
         } else {
-            System.out.println("До новых встреч!");
+            display.showMessage("До новых встреч!");
             scanner.close();
             return false;
         }

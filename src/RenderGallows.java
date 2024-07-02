@@ -1,5 +1,5 @@
 public class RenderGallows {
-    public static final String empty = """
+    public static final String EMPTY = """
                                     ___________
                                     ||      |
                                     ||
@@ -14,7 +14,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String stageOne = """
+    public static final String STAGE_ONE = """
                                     ___________
                                     ||      |
                                     ||     /¯\\\s
@@ -29,7 +29,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String stageTwo = """
+    public static final String STAGE_TWO = """
                                     ___________
                                     ||      |
                                     ||     /¯\\
@@ -44,7 +44,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String stageThree = """
+    public static final String STAGE_THREE = """
                                     ___________
                                     ||      |
                                     ||     /¯\\
@@ -59,7 +59,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String stageFour = """
+    public static final String STAGE_FOUR = """
                                     ___________
                                     ||      |
                                     ||     /¯\\
@@ -74,7 +74,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String stageFive = """
+    public static final String STAGE_FIVE = """
                                     ___________
                                     ||      |
                                     ||     /¯\\
@@ -89,7 +89,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String hangedMan = """
+    public static final String HANGED_MAN = """
                                     ___________
                                     ||      |
                                     ||     /¯\\
@@ -104,7 +104,7 @@ public class RenderGallows {
                                     ||
                                     ===============
                             """;
-    public static final String amnestyMan = """
+    public static final String AMNESTY_MAN = """
                                     ___________
                                     ||\s
                                     ||  *       *
