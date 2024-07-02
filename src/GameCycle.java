@@ -12,7 +12,7 @@ public class GameCycle {
         char enteredLetter;
 
         Printer display = new ConsolePrinter();
-        DictionaryLoader dictionary = new FileLoader().initializeTheDictionary(display);
+        DictionaryLoader dictionary = new DictionaryLoaderFromFile().initializeTheDictionary(display);
         Reader enters = new ConsoleReader();
         HiddenWord hiddenWord = new HiddenWord("");
 

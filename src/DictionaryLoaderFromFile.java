@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class FileLoader implements DictionaryLoader {
+public class DictionaryLoaderFromFile implements DictionaryLoader {
 
     private List<String> dictionary;
 
